@@ -1,3 +1,33 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [2021秋招技术岗面试笔记](#2021%E7%A7%8B%E6%8B%9B%E6%8A%80%E6%9C%AF%E5%B2%97%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0)
+  - [java SE基础](#java-se%E5%9F%BA%E7%A1%80)
+    - [请你谈谈Java中是如何支持正则表达式操作的？](#%E8%AF%B7%E4%BD%A0%E8%B0%88%E8%B0%88java%E4%B8%AD%E6%98%AF%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%93%8D%E4%BD%9C%E7%9A%84)
+      - [浮点数](#%E6%B5%AE%E7%82%B9%E6%95%B0)
+      - [类型转换](#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2)
+    - [Array与ArrayList对比](#array%E4%B8%8Earraylist%E5%AF%B9%E6%AF%94)
+    - [请你解释为什么会出现4.0-3.6=0.40000001这种现象？](#%E8%AF%B7%E4%BD%A0%E8%A7%A3%E9%87%8A%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%87%BA%E7%8E%B040-36040000001%E8%BF%99%E7%A7%8D%E7%8E%B0%E8%B1%A1)
+    - [Lambda表达式特征](#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%89%B9%E5%BE%81)
+    - [HashMap原理](#hashmap%E5%8E%9F%E7%90%86)
+      - [hashcode与equals](#hashcode%E4%B8%8Eequals)
+      - [TreeMap](#treemap)
+      - [LinkedHashMap](#linkedhashmap)
+      - [**请你介绍一下map的分类和常见的情况**](#%E8%AF%B7%E4%BD%A0%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8Bmap%E7%9A%84%E5%88%86%E7%B1%BB%E5%92%8C%E5%B8%B8%E8%A7%81%E7%9A%84%E6%83%85%E5%86%B5)
+    - [方法重写（override）与重载（overload）](#%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99override%E4%B8%8E%E9%87%8D%E8%BD%BDoverload)
+    - [请说明内部类可以引用他包含类的成员吗，如果可以，有没有什么限制吗？](#%E8%AF%B7%E8%AF%B4%E6%98%8E%E5%86%85%E9%83%A8%E7%B1%BB%E5%8F%AF%E4%BB%A5%E5%BC%95%E7%94%A8%E4%BB%96%E5%8C%85%E5%90%AB%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E5%90%97%E5%A6%82%E6%9E%9C%E5%8F%AF%E4%BB%A5%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E9%99%90%E5%88%B6%E5%90%97)
+    - [异常处理](#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86)
+      - [抛出（throw）与声明（throws）异常](#%E6%8A%9B%E5%87%BAthrow%E4%B8%8E%E5%A3%B0%E6%98%8Ethrows%E5%BC%82%E5%B8%B8)
+      - [捕获并处理异常](#%E6%8D%95%E8%8E%B7%E5%B9%B6%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8)
+    - [抽象类和接口的区别](#%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB)
+    - [StringBuffer与StringBuilder](#stringbuffer%E4%B8%8Estringbuilder)
+      - [String的不可变性](#string%E7%9A%84%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%80%A7)
+    - [java集合框架](#java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6)
+      - [集合](#%E9%9B%86%E5%90%88)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 2021秋招技术岗面试笔记
 ## java SE基础
 ### 请你谈谈Java中是如何支持正则表达式操作的？
