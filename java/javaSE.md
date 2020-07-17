@@ -5,6 +5,9 @@
 - [2021秋招技术岗面试笔记](#2021%E7%A7%8B%E6%8B%9B%E6%8A%80%E6%9C%AF%E5%B2%97%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0)
   - [java SE基础](#java-se%E5%9F%BA%E7%A1%80)
     - [请你谈谈Java中是如何支持正则表达式操作的？](#%E8%AF%B7%E4%BD%A0%E8%B0%88%E8%B0%88java%E4%B8%AD%E6%98%AF%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%93%8D%E4%BD%9C%E7%9A%84)
+    - [请你说明一下，在Java中如何跳出当前的多重嵌套循环？](#%E8%AF%B7%E4%BD%A0%E8%AF%B4%E6%98%8E%E4%B8%80%E4%B8%8B%E5%9C%A8java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B7%B3%E5%87%BA%E5%BD%93%E5%89%8D%E7%9A%84%E5%A4%9A%E9%87%8D%E5%B5%8C%E5%A5%97%E5%BE%AA%E7%8E%AF)
+    - [java的数据类型](#java%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B)
+      - [基础数据类型](#%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B)
       - [浮点数](#%E6%B5%AE%E7%82%B9%E6%95%B0)
       - [类型转换](#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2)
     - [Array与ArrayList对比](#array%E4%B8%8Earraylist%E5%AF%B9%E6%AF%94)
@@ -47,6 +50,7 @@ class RegExpTest {
 }
 ```
 > 在编写处理字符串的程序时，经常会有查找符合某些复杂规则的字符串的需要。正则表达式就是用于描述这些规则的工具。换句话说，正则表达式就是记录文本规则的代码。计算机处理的信息更多的时候不是数值而是字符串，正则表达式就是在进行字符串匹配和处理的时候最为强大的工具，绝大多数语言都提供了对正则表达式的支持。
+
 ### 请你说明一下，在Java中如何跳出当前的多重嵌套循环？
 在最外层循环前加一个标记如A，然后用break A;可以跳出多重循环。
 ```java
@@ -65,21 +69,23 @@ public class LoopWithLabel {
         System.out.println("This is end");
     }
 }
-```
+```  
+
 ### java的数据类型
 #### 基础数据类型
 > int, char, boolean, short, long, float, double
 #### 缺省值
 > 对象引用类型的缺省值为null  
 > 基础数据类型的缺省值与其类型有关，例如int-0、boolean-false
-#### 整数类型对比（由小到大）
+#### 整数类型对比（由小到大）  
 
 | 数据类型 | 大小（位数） | 取值范围 | 默认值 |
 | ------ | ------ | ------ | ------ |
 | byte | 1Byte(8bit) | -128（-2^7）- 127（2^7-1）| 0 |
 | short | 2Byte(16bit) | -32768（-2^15）- 32767（2^15 - 1）| 0 |
 | int | 4Byte(32bit)| -2^31~2^31-1 | 0 |
-| long | 8Byte(64bit) | -2^63~2^63-1 | ***0L*** |
+| long | 8Byte(64bit) | -2^63~2^63-1 | ***0L*** |  
+
 > long赋值需要以L结尾  
 > long gg = 44;//错误  
 > long gg = 44L；//正确
@@ -106,6 +112,7 @@ double ttf=7.55684954444444444;
 
 float rrf=(float) ttf;//会造成精度的损失，结果为7.5568495
 ```
+
 ### Array与ArrayList对比
 >Array可以存储任何数据类型，ArrayList只能存储对象类型  
 >Array大小固定，ArrayList长度可变
