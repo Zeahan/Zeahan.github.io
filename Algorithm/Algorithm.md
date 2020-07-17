@@ -1,14 +1,29 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [2021秋招技术岗面试笔记](#2021%E7%A7%8B%E6%8B%9B%E6%8A%80%E6%9C%AF%E5%B2%97%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0)
+  - [算法](#%E7%AE%97%E6%B3%95)
+    - [排序算法](#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95)
+      - [冒泡排序](#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F)
+      - [选择排序](#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F)
+      - [插入排序](#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F)
+      - [希尔排序](#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F)
+      - [归并排序](#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 2021秋招技术岗面试笔记
 ## 算法
 ### 排序算法
 ![复杂度分析](https://www.runoob.com/wp-content/uploads/2019/03/0B319B38-B70E-4118-B897-74EFA7E368F9.png)  
-* 冒泡排序  
-    > 无序区在前，有序区在后  
-    > 对于长度为`n`的数组
-    > 从无序区的第一位（`nums[0]`）开始，两两进行比较, 将较大/较小者不断后移至无序区末尾
-      `nums[n-i]`, `i`为有序区的长度，即已经排序的次数（共需排序`n-1`次）    
-    ![冒泡排序](https://www.runoob.com/wp-content/uploads/2019/03/bubbleSort.gif)
-    ```java
+####  冒泡排序  
+> 无序区在前，有序区在后  
+> 对于长度为`n`的数组
+> 从无序区的第一位（`nums[0]`）开始，两两进行比较, 将较大/较小者不断后移至无序区末尾
+`nums[n-i]`, `i`为有序区的长度，即已经排序的次数（共需排序`n-1`次）    
+![冒泡排序](https://www.runoob.com/wp-content/uploads/2019/03/bubbleSort.gif)
+ ```java
         public int[] sortArray(int[] nums) {
                 // 共排序n-1次
                 for (int i=0; i<nums.length-1; i++) {
@@ -29,12 +44,13 @@
                 }
                 return nums;
       }
-    ```
-* 选择排序
-    > 有序区在前，无序区在后
-    > 对于长度为`n`的数组，遍历无序区（`nums[i]` ~ `nums[n-1]`), 将其中最大/最小元素放置在有序区的末尾之后（当前无序区的首位`nums[i]`)  
-    ![选择排序](https://www.runoob.com/wp-content/uploads/2019/03/selectionSort.gif)
-  ```java
+```
+
+####  选择排序
+> 有序区在前，无序区在后
+> 对于长度为`n`的数组，遍历无序区（`nums[i]` ~ `nums[n-1]`), 将其中最大/最小元素放置在有序区的末尾之后（当前无序区的首位`nums[i]`)  
+![选择排序](https://www.runoob.com/wp-content/uploads/2019/03/selectionSort.gif)
+```java
       public int[] sortArray(int[] nums) {
               // 排序完成前，有序区的最大右边界为n-1(排除末尾元素)
               for (int i=0; i<nums.length-1; i++) {
@@ -53,13 +69,14 @@
               }
               return nums;
       }
-    ```
-* 插入排序
-    > 将第一待排序序列第一个元素看做一个有序序列，把第二个元素到最后一个元素当成是未排序序列。  
-      从头到尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。）
-    > 有序区在前，无序区在后
-    ![插入排序](https://www.runoob.com/wp-content/uploads/2019/03/insertionSort.gif)  
-    ```java
+ ```
+
+####  插入排序
+> 将第一待排序序列第一个元素看做一个有序序列，把第二个元素到最后一个元素当成是未排序序列。  
+从头到尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。）
+> 有序区在前，无序区在后
+![插入排序](https://www.runoob.com/wp-content/uploads/2019/03/insertionSort.gif)  
+```java
     public int[] sortArray(int[] nums) {
             for (int i=1; i<nums.length; i++) {
                 int j = i;
@@ -76,11 +93,12 @@
             }
             return nums;
         }
-    ```
- * 希尔排序
-    >希尔排序是将待排序的数组元素 按下标的一定增量(gap)分组 ，分成多个子序列，然后对各个子序列进行直接插入排序算法排序；然后依次缩减增量再进行排序，直到增量为1时，进行最后一次直接插入排序，排序结束。  
-    ![希尔排序](https://upload-images.jianshu.io/upload_images/6095354-ff984d80dbc0455f.png)
-    ```java
+```
+
+####  希尔排序
+>希尔排序是将待排序的数组元素 按下标的一定增量(gap)分组 ，分成多个子序列，然后对各个子序列进行直接插入排序算法排序；然后依次缩减增量再进行排序，直到增量为1时，进行最后一次直接插入排序，排序结束。  
+![希尔排序](https://upload-images.jianshu.io/upload_images/6095354-ff984d80dbc0455f.png)
+```java
    public int[] sortArray(int[] nums) {
            // 计算gap，从n/2到1
            for (int gap=nums.length/2; gap>0; gap /= 2) {
@@ -98,24 +116,24 @@
            }
            return nums;
        }
-    ```
+```
    
-  * 归并排序
-    > 归并排序是一种分治算法  
-    首先“分”，将要排序的数组逐步对半分开，直到分割为长度为1的数组  
-    然后是“治”，自下向上，将分割后的数组按照顺序重新合并，步骤如下：  
-    1.申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列；  
-    2.设定两个指针，最初位置分别为两个已经排序序列的起始位置；  
-    3.比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置；  
-    4.重复步骤 3 直到某一指针达到序列尾；  
-    5.将另一序列剩下的所有元素直接复制到合并序列尾。
+####  归并排序
+> 归并排序是一种分治算法  
+首先“分”，将要排序的数组逐步对半分开，直到分割为长度为1的数组  
+然后是“治”，自下向上，将分割后的数组按照顺序重新合并，步骤如下：  
+1.申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列；  
+2.设定两个指针，最初位置分别为两个已经排序序列的起始位置；  
+3.比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置；  
+4.重复步骤 3 直到某一指针达到序列尾；  
+5.将另一序列剩下的所有元素直接复制到合并序列尾。
  
-  ![归并排序](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9yU21ETGtOc25nVGN1ZmNpYnlSbFBJbkI0YndrNjNzT1dmd0V2U1VSaWFHbHdscUZ1UlQ1U3pqOGliaWM0aWJnTEdPa0VSMm51WWxYa0ZWUXB6TnluVm9qeVp3LzY0MA?x-oss-process=image/format,png)
-  ![归并排序合并动画](https://www.runoob.com/wp-content/uploads/2019/03/mergeSort.gif)
-  复杂度分析
-  ![归并排序复杂度分析](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9yU21ETGtOc25nVGN1ZmNpYnlSbFBJbkI0YndrNjNzT1dCMmF0RWJPMTNFUFNLU0FaQUQxSDhmSU5lMTU3M3l3Z3k4Mm0zVmljZzhNemg1NEFGVkhFRGljdy82NDA?x-oss-process=image/format,png)
-  代码
-  ```java
+![归并排序](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9yU21ETGtOc25nVGN1ZmNpYnlSbFBJbkI0YndrNjNzT1dmd0V2U1VSaWFHbHdscUZ1UlQ1U3pqOGliaWM0aWJnTEdPa0VSMm51WWxYa0ZWUXB6TnluVm9qeVp3LzY0MA?x-oss-process=image/format,png)
+![归并排序合并动画](https://www.runoob.com/wp-content/uploads/2019/03/mergeSort.gif)
+复杂度分析
+![归并排序复杂度分析](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9yU21ETGtOc25nVGN1ZmNpYnlSbFBJbkI0YndrNjNzT1dCMmF0RWJPMTNFUFNLU0FaQUQxSDhmSU5lMTU3M3l3Z3k4Mm0zVmljZzhNemg1NEFGVkhFRGljdy82NDA?x-oss-process=image/format,png)
+代码
+```java
   public int[] sortArray(int[] nums) {
           // 边界
           if (nums.length < 2) return nums;
@@ -159,4 +177,4 @@
   
           return res;
       }
-  ```
+ ```
