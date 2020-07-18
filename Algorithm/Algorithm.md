@@ -17,6 +17,7 @@
 ## 算法
 ### 排序算法
 ![复杂度分析](https://www.runoob.com/wp-content/uploads/2019/03/0B319B38-B70E-4118-B897-74EFA7E368F9.png)  
+
 ####  冒泡排序  
 > 无序区在前，有序区在后  
 > 对于长度为`n`的数组
@@ -233,3 +234,4 @@
         recSort(nums, pointL + 1, right);
     }
 ```
+
