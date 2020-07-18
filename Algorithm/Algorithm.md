@@ -118,7 +118,7 @@
        }
 ```
    
-####  归并排序
+#### 归并排序
 > 归并排序是一种分治算法  
 首先“分”，将要排序的数组逐步对半分开，直到分割为长度为1的数组  
 然后是“治”，自下向上，将分割后的数组按照顺序重新合并，步骤如下：  
@@ -178,3 +178,58 @@
           return res;
       }
  ```
+
+#### 快速排序
+> 快速排序是一种交换排序。  
+  基本思想：  
+  通过一趟排序将要排序的数据分割成独立的两部分：分割点左边都是比它小的数，右边都是比它大的数。  
+  然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。
+
+![快速排序](https://upload-images.jianshu.io/upload_images/1932104-85f1d78294024c5b.jpg)
+
+代码
+```java
+//6.快速排序
+    public int[] sortArray(int[] nums) {
+        recSort(nums, 0, nums.length-1);
+        return nums;
+    }
+
+    public static void recSort(int[] nums, int left, int right) {
+        if (left >= right) return;
+
+        // 基准值
+        int base = nums[left];
+        // 左指针
+        int pointL = left;
+        // 右指针
+        int pointR = right;
+
+        while (pointR > pointL) {
+            // 向左移动右指针，直到找到比基准值小的数
+            while (nums[pointR] >= base && pointR > pointL) {
+                pointR--;
+            }
+            // 将右指针指向的数放置在左指针的位置
+            nums[pointL] = nums[pointR];
+
+            // 如果左右指针相遇，说明本次排序完成，提前终止
+            if (pointL >= pointR) break;
+
+            // 左指针右移一位（不与基准值自身比较，从下一位开始比较）
+            pointL++;
+            while (nums[pointL] < base && pointR > pointL) {
+                pointL++;
+            }
+            // 将左指针指向的数放置在右指针的位置
+            nums[pointR] = nums[pointL];
+        }
+
+        // 将基准值放置在左右指针相遇的位置（中间）
+        nums[pointL] = base;
+
+        // 以基准值为中心，将数组分割，递归地对左右两个数组进行排序
+        recSort(nums, left, pointL - 1);
+        recSort(nums, pointL + 1, right);
+    }
+```
