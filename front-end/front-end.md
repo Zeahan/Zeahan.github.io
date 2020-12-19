@@ -4,8 +4,66 @@
 
 ## 基础
 
+[输入URL后](https://zhuanlan.zhihu.com/p/80551769)
+
+#### HTTP常见请求头
+**Accept 可接受的响应类型**
+Accept-Charset 字符集
+Accept-Encoding 编码
+**Accept-Language 可接受的语言**
+**Content-Language**
+**Content-Type 发送内容的类型**
+Authorization 认证信息 token
+Origin 跨域请求的来源信息
+响应头
+Access-Control-Allow-Origin
+
+#### cors
+对于简单请求，浏览器直接发送带有origin的请求，对于复杂请求，先发送option请求
+浏览器将响应头中的Access-Control-Allow-Origin与Origin对比，来决定是否允许请求
+
+
 
 ## javascript
+
+#### Promise
+**状态：**
+1. 待定Pending 初始状态
+2. 已兑现（fulfilled）: 意味着操作成功完成
+3. 已拒绝（rejected）: 意味着操作失败
+
+`Promise.reject(reason)` 返回一个拒绝状态，带有原因的Promise
+`Promise.resolve(value)` 返回一个带着给定值解析过的Promise
+
+##### Promise all any
+两者都接受一个Promise的可迭代对象作为参数
+all：返回一个Promise，结束状态包含所有迭代对象参数的数组，如果全部成功或参数为空数组，返回的Promise为成功，否则为待定（等全部Promise结束后状态变化为成功或失败）
+any：任意一个成功，返回该成功的Promise，否则返回失败的Promise，带有所有错误原因的集合
+
+##### 链式调用
+`Promise.then(onFufilled, onRejected)`
+第一个是Promise成功状态的回调函数，第二个参数是拒绝状态的回调函数
+`then()` 返回的是一个Promise对象，**当前Promise p1回调函数的返回值对于其返回的Promise p2有以下几种情况：**
+1. 返回了一个值x，则p2为接受状态，其回调函数的参数为x
+2. 无返回值，则p2为接收状态，其回调函数的参数为undefined
+3. 返回了一个接收状态的Promise p，则p2为接受状态，其回调函数的参数与p相同
+4. 返回了一个拒绝状态的Promise p，则p2为拒绝状态，其回调函数
+5. 返回了一个待定的Promise p，则p2同为待定状态，且终态与p相同
+6. **如果没有回调函数，则简单地返回与p1终态相同的新Promise p2**
+
+由于`.then()`会返回一个新的Promise，所以可以一直链式调用下去，对于后续函数依赖上一个函数的返回值作为参数时非常好用
+`.catch(onRejected)` 等价于（内部call）`.then(undefined, onRejected)`
+可以一直`.then()`而不处理拒绝的情况，最后用catch处理
+`finally()`的回调函数无论接受与否均会调用
+
+#### 数组操作
+##### map
+接受一个函数作为参数，该函数调用数组中每一个元素并返回一个值
+返回一个包含所有返回值的数组
+##### forEach
+第一个参数为回调函数，对每个元素执行一次
+回调函数的参数为 当前元素（必要），当前索引（可选），该数组（可选）
+第二个参数是thisArg（用于回调函数的this值），可选
 
 #### call apply bind
 1. 三者第一个参数都是目标函数，都会改变this的指向
@@ -122,6 +180,10 @@ XMLHttpRequest
 #### ajax axios fetch
 
 #### 懒加载和预加载
+##### 懒加载
+用一张小尺寸占位图代替真实的图片地址作为src，将真实的图片地址放在其他属性中，用scrollTop检测是否在视野内，进入视野时再将地址取出来放入src
+##### 预加载
+提前加载资源，可以放在js里加载，可以放在css里加载
 
 #### js变量提升
 使用var声明的变量会被提升到最顶部, 在声明前可以访问到
@@ -210,3 +272,26 @@ inline-block布局 像文本一样去排列block元素
 
 ## 框架
 ### React
+
+#### 使用Link切换路由
+React会使用diff算法比较切换前后的DOM树，仅对变化的部分进行更新
+
+#### 非受控组件
+表单中的input，自己维护一个state。
+
+#### 组件使用索引作为key有什么坏处
+组件的顺序改变（重新排序或者在组件前添加新组件）之后，key也会变化，导致列表重新渲染。同时，非受控的输入组件中的值，会与原有顺序冲突，造成混乱
+
+#### Render props
+**要解决的问题：组件状态和逻辑的复用**
+要在A组件中渲染一个依赖它的state的B组件，可以直接把B组件写死在A组件的render函数中
+但是如果想要让A组件可以渲染B、C、D、E等等组件中任意一个，这样的方法就不行了
+**解决方案：**
+将任意合法的组件X的函数作为一个props传入组件A中，然后在A的render中调用这个函数
+
+#### 高阶组件
+高阶组件接受一个组件的函数作为参数，然后在其render中使用render props
+**不要在某个组件的render方法中使用高阶组件，这会使得该高阶组件在上一层组件的重新挂载中丢失并被重新创建** 在组件外使用HOC，可以保证HOC调用的一致性
+
+#### Fragments
+允许render方法返回一组多个独立的子组件，而不添加额外的DOM（正常情况下需要套在一个div这样的容器中返回）
